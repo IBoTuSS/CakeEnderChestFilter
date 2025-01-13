@@ -1,0 +1,15 @@
+#CakeStudio - https://discord.gg/rsgYvuRD8n
+
+#Настройки
+settings:
+  #Тип звука при попытке поместить предмет в Эндер-Скриню
+  sound: ENTITY_ITEM_PICKUP
+  #Список предметов для фильтрации
+  items-filter: [DIAMOND,DIAMOND_ORE]
+
+#Сообщения
+messages:
+  usage: "&fИспользования: #00F3FB/EnderChestFilter <reload>"
+  reload: "#0EC8E2[✔] &fКонфиг успешно перезагружен!"
+  unknown: "#0EC8E2[✘] &fТакой команды не существует!"
+  player: "#0EC8E2[✘] &fВы не можете #0EC8E2поместить &fэтот предмет в Эндер-Скриню!"

@@ -1,0 +1,13 @@
+name: CakeEnderChestFilter
+version: '${version}'
+main: dev.cakestudio.cakeenderchestfilter.CakeEnderChestFilter
+api-version: '1.16'
+authors: [CakeStudio]
+website: https://discord.gg/rsgYvuRD8n
+commands:
+  EnderChestFilter: {}
+permissions:
+  cakeenderchestfilter.bypass:
+    default: op
+  cakeenderchestfilter.reload:
+    default: op
