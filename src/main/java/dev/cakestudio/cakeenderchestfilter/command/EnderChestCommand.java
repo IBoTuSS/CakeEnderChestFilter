@@ -17,7 +17,7 @@ public class EnderChestCommand implements CommandExecutor {
             sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.usage")));
             return true;
         }
-        if(sender instanceof Player player) {
+        if (sender instanceof Player player) {
             switch (args[0].toLowerCase()) {
                 case "reload":
                     Config.loadYaml(CakeEnderChestFilter.instance);
