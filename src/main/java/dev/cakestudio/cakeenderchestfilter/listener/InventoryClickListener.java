@@ -9,13 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
-import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class InventoryClickListener implements Listener {
 
@@ -143,32 +141,6 @@ public class InventoryClickListener implements Listener {
                 openInventory.remove(item);
                 player.getWorld().dropItemNaturally(player.getLocation(), item);
             });
-        }
-    }
-
-    @EventHandler
-    public void onPlayerSwapHandItems(@NotNull PlayerSwapHandItemsEvent event) {
-        Player player = event.getPlayer();
-        if (!player.hasPermission("cakeenderchestfilter.bypass")) {
-            ItemStack mainHandItem = event.getMainHandItem();
-            ItemStack offHandItem = event.getOffHandItem();
-
-            assert mainHandItem != null && offHandItem != null;
-
-            boolean isFiltered = Stream.of(mainHandItem, offHandItem)
-                    .map(item -> item.getType().toString())
-                    .anyMatch(itemType -> Config.getConfig().getStringList("settings.items-filter").contains(itemType));
-
-            if (isFiltered) {
-                event.setCancelled(true);
-
-                String sound = Config.getConfig().getString("settings.sound");
-                Sound sound1 = Sound.valueOf(sound);
-                player.playSound(player.getLocation(), sound1, 1.0f, 1.0f);
-
-                String message = Config.getConfig().getString("messages.player");
-                player.sendMessage(HexColor.color(message));
-            }
         }
     }
 }
