@@ -17,7 +17,7 @@ public class EnderChestCompleter implements TabCompleter {
 
         if (args.length == 1) {
             completions.add("reload");
-            //completions.add("menu");
+            //completions.add("add-item");
         }
 
         return completions;

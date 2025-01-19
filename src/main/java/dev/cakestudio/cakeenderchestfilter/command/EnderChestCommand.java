@@ -23,9 +23,10 @@ public class EnderChestCommand implements CommandExecutor {
                     Config.loadYaml(CakeEnderChestFilter.instance);
                     player.sendMessage(HexColor.color(Config.getConfig().getString("messages.reload")));
                     break;
-                case "menu":
+                //case "add-item":
                     //Soon...
-                    break;
+                    //player.sendMessage(HexColor.color(Config.getConfig().getString("messages.add-item")));
+                    //break;
 
                 default:
                     player.sendMessage(HexColor.color(Config.getConfig().getString("messages.unknown")));
