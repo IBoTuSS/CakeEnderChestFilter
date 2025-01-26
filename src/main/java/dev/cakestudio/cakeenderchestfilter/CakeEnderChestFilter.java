@@ -1,7 +1,6 @@
 package dev.cakestudio.cakeenderchestfilter;
 
 import dev.cakestudio.cakeenderchestfilter.command.EnderChestCommand;
-import dev.cakestudio.cakeenderchestfilter.command.EnderChestCompleter;
 import dev.cakestudio.cakeenderchestfilter.configuration.Config;
 import dev.cakestudio.cakeenderchestfilter.listener.InventoryClickListener;
 import dev.cakestudio.cakeenderchestfilter.utils.HexColor;
@@ -26,7 +25,7 @@ public final class CakeEnderChestFilter extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("");
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getCommand("EnderChestFilter").setExecutor(new EnderChestCommand());
-        getCommand("EnderChestFilter").setTabCompleter(new EnderChestCompleter());
+        getCommand("EnderChestFilter").setTabCompleter(new EnderChestCommand());
 
     }
 

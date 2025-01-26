@@ -6,10 +6,14 @@ import dev.cakestudio.cakeenderchestfilter.utils.HexColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class EnderChestCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class EnderChestCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
@@ -17,23 +21,33 @@ public class EnderChestCommand implements CommandExecutor {
             sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.usage")));
             return true;
         }
-        if (sender instanceof Player player) {
-            switch (args[0].toLowerCase()) {
-                case "reload":
-                    Config.loadYaml(CakeEnderChestFilter.instance);
-                    player.sendMessage(HexColor.color(Config.getConfig().getString("messages.reload")));
-                    break;
-                //case "add-item":
-                    //Soon...
-                    //player.sendMessage(HexColor.color(Config.getConfig().getString("messages.add-item")));
-                    //break;
 
-                default:
-                    player.sendMessage(HexColor.color(Config.getConfig().getString("messages.unknown")));
-                    break;
-            }
+        switch (args[0].toLowerCase()) {
+            case "reload":
+                if (!sender.hasPermission("cakeenderchestfilter.reload")) {
+                    sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.no-permission")));
+                    return true;
+                }
+                Config.loadYaml(CakeEnderChestFilter.instance);
+                sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.reload")));
+                break;
+
+            default:
+                sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.unknown")));
+                break;
         }
 
         return true;
+    }
+
+    @Override
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            completions.add("reload");
+        }
+
+        return completions;
     }
 }
