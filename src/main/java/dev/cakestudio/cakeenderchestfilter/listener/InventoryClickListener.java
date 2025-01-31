@@ -11,13 +11,16 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class InventoryClickListener implements Listener {
 
     private final String SOUND = Config.getConfig().getString("settings.sound");
     private final String MESSAGE = Config.getConfig().getString("messages.player");
+    private final List<String> TYPE = Config.getConfig().getStringList("settings.type");
 
-    private boolean isEnderChest(Inventory inventory) {
-        return inventory != null && inventory.getType() == InventoryType.ENDER_CHEST;
+    private boolean isInventory(Inventory inventory) {
+        return inventory != null && TYPE.contains(inventory.getType().toString());
     }
 
     private boolean isItemsFilter(ItemStack itemStack) {
@@ -34,7 +37,7 @@ public class InventoryClickListener implements Listener {
         }
 
         if (event.getRawSlots().stream()
-                .noneMatch(slot -> isEnderChest(event.getView().getInventory(slot)))) {
+                .noneMatch(slot -> isInventory(event.getView().getInventory(slot)))) {
             return;
         }
         if (isItemsFilter(event.getOldCursor())) {
@@ -56,7 +59,7 @@ public class InventoryClickListener implements Listener {
         }
 
         if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
-            if (!isEnderChest(event.getView().getTopInventory())) {
+            if (!isInventory(event.getView().getTopInventory())) {
                 return;
             }
 
@@ -72,7 +75,7 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-        if (!isEnderChest(event.getClickedInventory())) {
+        if (!isInventory(event.getClickedInventory())) {
             return;
         }
 

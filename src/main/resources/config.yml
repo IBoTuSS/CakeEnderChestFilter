@@ -1,7 +1,11 @@
 #CakeStudio - https://discord.gg/rsgYvuRD8n
 
-#Настройки
+# Настройки плагина
 settings:
+  #Типы хранилищ, в которые запрещено помещать запрещенные ресурсы.
+  #Доступные значения: CHEST, ENDER_CHEST, SHULKER_BOX, BARREL, HOPPER, DISPENSER, DROPPER и другие
+  #Можно указать несколько типов через запятую: [ENDER_CHEST, SHULKER_BOX]
+  type: [ENDER_CHEST]
   #Тип звука при попытке поместить предмет в Эндер-Скриню
   sound: ENTITY_ITEM_PICKUP
   #Список предметов для фильтрации
