@@ -11,16 +11,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
 public class InventoryClickListener implements Listener {
 
-    private final String SOUND = Config.getConfig().getString("settings.sound");
-    private final String MESSAGE = Config.getConfig().getString("messages.player");
-    private final List<String> TYPE = Config.getConfig().getStringList("settings.type");
-
     private boolean isInventory(Inventory inventory) {
-        return inventory != null && TYPE.contains(inventory.getType().toString());
+        return inventory != null && Config.getConfig().getStringList("settings.type").contains(inventory.getType().toString());
     }
 
     private boolean isItemsFilter(ItemStack itemStack) {
@@ -45,9 +39,9 @@ public class InventoryClickListener implements Listener {
         }
 
         event.setCancelled(true);
-        Sound sound = Sound.valueOf(SOUND);
+        Sound sound = Sound.valueOf(Config.getConfig().getString("settings.sound"));
         player.playSound(player.getLocation(), sound, 1.0f, 1.0f);
-        player.sendMessage(HexColor.color(MESSAGE));
+        player.sendMessage(HexColor.color(Config.getConfig().getString("messages.player")));
     }
 
     @EventHandler
@@ -68,10 +62,9 @@ public class InventoryClickListener implements Listener {
             }
 
             event.setCancelled(true);
-            Sound sound = Sound.valueOf(SOUND);
+            Sound sound = Sound.valueOf(Config.getConfig().getString("settings.sound"));
             player.playSound(player.getLocation(), sound, 1.0f, 1.0f);
-
-            player.sendMessage(HexColor.color(MESSAGE));
+            player.sendMessage(HexColor.color(Config.getConfig().getString("messages.player")));
             return;
         }
 
@@ -92,9 +85,8 @@ public class InventoryClickListener implements Listener {
         }
 
         event.setCancelled(true);
-        Sound sound = Sound.valueOf(SOUND);
+        Sound sound = Sound.valueOf(Config.getConfig().getString("settings.sound"));
         player.playSound(player.getLocation(), sound, 1.0f, 1.0f);
-
-        player.sendMessage(HexColor.color(MESSAGE));
+        player.sendMessage(HexColor.color(Config.getConfig().getString("messages.player")));
     }
 }
