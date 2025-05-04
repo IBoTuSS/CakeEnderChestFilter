@@ -13,7 +13,7 @@ public final class CakeEnderChestFilter extends JavaPlugin {
     public static CakeEnderChestFilter instance;
 
     private void msg(String msg) {
-        String prefix = "#3A90DACakeAirDropAddon &7| ";
+        String prefix = "#CakeEnderChestFilter &7| ";
         Bukkit.getConsoleSender().sendMessage(HexColor.color(prefix + msg));
     }
 
