@@ -2,6 +2,7 @@ package dev.cakestudio.cakeenderchestfilter.listener;
 
 import dev.cakestudio.cakeenderchestfilter.configuration.Config;
 import dev.cakestudio.cakeenderchestfilter.utils.HexColor;
+import lombok.NonNull;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,7 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 public class InventoryClickListener implements Listener {
 
@@ -23,7 +23,7 @@ public class InventoryClickListener implements Listener {
     }
 
     @EventHandler
-    public void onInventoryDragEvent(@NotNull InventoryDragEvent event) {
+    public void onInventoryDragEvent(@NonNull InventoryDragEvent event) {
         Player player = (Player) event.getWhoClicked();
 
         if (player.hasPermission("cakeenderchestfilter.bypass")) {
@@ -45,7 +45,7 @@ public class InventoryClickListener implements Listener {
     }
 
     @EventHandler
-    public void onInventoryClickEvent(@NotNull InventoryClickEvent event) {
+    public void onInventoryClickEvent(@NonNull InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
         if (player.hasPermission("cakeenderchestfilter.bypass")) {

@@ -1,6 +1,6 @@
-#CakeStudio - https://discord.gg/rsgYvuRD8n
+#CakeStudio - https://dsc.gg/cakestudio
 
-# Настройки плагина
+#Настройки плагина
 settings:
   #Типы хранилищ, в которые запрещено помещать запрещенные ресурсы.
   #Доступные значения: CHEST, ENDER_CHEST, SHULKER_BOX, BARREL, HOPPER, DISPENSER, DROPPER и другие

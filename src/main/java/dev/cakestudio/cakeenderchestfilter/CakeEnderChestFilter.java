@@ -4,14 +4,16 @@ import dev.cakestudio.cakeenderchestfilter.command.EnderChestCommand;
 import dev.cakestudio.cakeenderchestfilter.configuration.Config;
 import dev.cakestudio.cakeenderchestfilter.listener.InventoryClickListener;
 import dev.cakestudio.cakeenderchestfilter.utils.HexColor;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CakeEnderChestFilter extends JavaPlugin {
+    @Getter
     public static CakeEnderChestFilter instance;
 
     private void msg(String msg) {
-        String prefix = HexColor.color("#3A90DACakeEnderChestFilter &7| ");
+        String prefix = "#3A90DACakeAirDropAddon &7| ";
         Bukkit.getConsoleSender().sendMessage(HexColor.color(prefix + msg));
     }
 
