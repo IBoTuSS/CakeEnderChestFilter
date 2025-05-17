@@ -26,7 +26,7 @@ public class EnderChestCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.no-permission")));
                 return true;
             }
-            Config.loadYaml(CakeEnderChestFilter.instance);
+            Config.reload(CakeEnderChestFilter.instance);
             sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.reload")));
         } else {
             sender.sendMessage(HexColor.color(Config.getConfig().getString("messages.unknown")));

@@ -13,7 +13,7 @@ public final class CakeEnderChestFilter extends JavaPlugin {
     public static CakeEnderChestFilter instance;
 
     private void msg(String msg) {
-        String prefix = "#CakeEnderChestFilter &7| ";
+        String prefix = "#3A90DACakeEnderChestFilter &7| ";
         Bukkit.getConsoleSender().sendMessage(HexColor.color(prefix + msg));
     }
 
@@ -22,8 +22,8 @@ public final class CakeEnderChestFilter extends JavaPlugin {
         instance = this;
         Config.loadYaml(this);
         Bukkit.getConsoleSender().sendMessage("");
-        msg("&fDeveloper: &aCakeStudio");
-        msg("&fVersion: &dv" + getDescription().getVersion());
+        msg("&fDeveloper: #3A90DACakeStudio");
+        msg("&fVersion: #3A90DAv" + getDescription().getVersion());
         Bukkit.getConsoleSender().sendMessage("");
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getCommand("EnderChestFilter").setExecutor(new EnderChestCommand());

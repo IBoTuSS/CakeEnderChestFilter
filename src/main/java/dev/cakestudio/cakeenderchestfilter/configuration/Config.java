@@ -12,12 +12,17 @@ public class Config {
     @Getter
     private static FileConfiguration config;
 
+    private static File configFile;
+
     public static void loadYaml(@NonNull Plugin plugin) {
-        File file = new File(plugin.getDataFolder(), "config.yml");
-        if (!file.exists()) {
+        configFile = new File(plugin.getDataFolder(), "config.yml");
+        if (!configFile.exists()) {
             plugin.saveResource("config.yml", true);
         }
+        config = YamlConfiguration.loadConfiguration(configFile);
+    }
 
-        config = YamlConfiguration.loadConfiguration(file);
+    public static void reload(@NonNull Plugin plugin) {
+        config = YamlConfiguration.loadConfiguration(configFile);
     }
 }
