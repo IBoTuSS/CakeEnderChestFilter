@@ -34,10 +34,11 @@ public class InventoryClickListener implements Listener {
     }
 
     private boolean isBlockedItem(ItemStack itemStack, Configuration config) {
-        if (itemStack == null || itemStack.getType() == Material.AIR) return true;
+        if (itemStack == null || itemStack.getType() == Material.AIR) return false;
         List<String> filter = config.getStringList("settings.items-filter");
         return filter.stream()
-                .noneMatch(entry -> VALID_MATERIALS.contains(entry.toUpperCase()) && itemStack.getType().name().equalsIgnoreCase(entry));
+                .anyMatch(entry -> VALID_MATERIALS.contains(entry.toUpperCase()) &&
+                        itemStack.getType().name().equalsIgnoreCase(entry));
     }
 
     private void denyAction(@NonNull Player player, @NonNull Configuration config) {
@@ -64,7 +65,7 @@ public class InventoryClickListener implements Listener {
         if (event.getRawSlots().stream()
                 .noneMatch(slot -> isTargetInventory(event.getView().getInventory(slot), config))) return;
 
-        if (isBlockedItem(event.getOldCursor(), config)) return;
+        if (!isBlockedItem(event.getOldCursor(), config)) return;
 
         event.setCancelled(true);
         denyAction(player, config);
@@ -82,7 +83,7 @@ public class InventoryClickListener implements Listener {
 
         if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
             if (!isTargetInventory(topInventory, config)) return;
-            if (isBlockedItem(event.getCurrentItem(), config)) return;
+            if (!isBlockedItem(event.getCurrentItem(), config)) return;
 
             event.setCancelled(true);
             denyAction(player, config);
@@ -94,14 +95,14 @@ public class InventoryClickListener implements Listener {
         switch (event.getClick()) {
             case NUMBER_KEY -> {
                 ItemStack hotbarItem = player.getInventory().getItem(event.getHotbarButton());
-                if (isBlockedItem(hotbarItem, config)) return;
+                if (!isBlockedItem(hotbarItem, config)) return;
             }
             case SWAP_OFFHAND -> {
                 ItemStack offhandItem = player.getInventory().getItemInOffHand();
-                if (isBlockedItem(offhandItem, config)) return;
+                if (!isBlockedItem(offhandItem, config)) return;
             }
             default -> {
-                if (isBlockedItem(event.getCursor(), config)) return;
+                if (!isBlockedItem(event.getCursor(), config)) return;
             }
         }
 
