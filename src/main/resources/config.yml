@@ -1,13 +1,12 @@
 #CakeStudio - https://dsc.gg/cakestudio
 
-# Настройки плагина
 storages:
-  #Типы хранилища
+  CHEST:
+    sound: BLOCK_CHEST_LOCKED
+    items-filter: [DIAMOND, COAL]
   ENDER_CHEST:
-    #Звук
     sound: ENTITY_ITEM_PICKUP
-    #Запрещенные предметы
-    items-filter: [DIAMOND, DIAMOND_ORE]
+    items-filter: [EMERALD, DIAMOND_ORE]
   SHULKER_BOX:
     sound: BLOCK_NOTE_BLOCK_BASS
     items-filter: [NETHERITE_INGOT, NETHERITE_BLOCK]
@@ -15,7 +14,6 @@ storages:
     sound: BLOCK_CHEST_LOCKED
     items-filter: [TNT, GUNPOWDER]
 
-# Сообщения
 messages:
   no-permission: "#0EC8E2[✘] &fУ вас нет прав!"
   usage: "&fИспользования: #00F3FB/EnderChestFilter <reload>"
