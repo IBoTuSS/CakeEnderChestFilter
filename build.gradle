@@ -3,9 +3,9 @@ plugins {
 }
 
 group = 'dev.cakestudio'
-version = '1.3'
+version = '1.4'
 
-def Directory = file("C:/Users/roman/Desktop/CakeStudio/Plugins")
+def Directory = file("C:/Work/CakeStudio/Plugins")
 def JavaVersion = 17
 
 repositories {
@@ -20,6 +20,8 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.38")
     testCompileOnly("org.projectlombok:lombok:1.18.38")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
+    compileOnly 'com.zaxxer:HikariCP:6.2.1'
+    compileOnly "org.json:json:20250517"
 }
 
 java {

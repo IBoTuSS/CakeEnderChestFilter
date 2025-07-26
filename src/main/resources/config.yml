@@ -1,22 +1,32 @@
-#CakeStudio - https://dsc.gg/cakestudio
+# =================================================================
+#               CakeEnderChestFilter by CakeStudio
+#                    https://dsc.gg/cakestudio
+# =================================================================
 
+database:
+  type: "sqlite"
+  filename: "filters.db"
+
+#Список хранилищ, для которых будет работать фильтр.
+#Для каждого хранилища можно указать звук, который будет проигрываться при попытке положить запрещенный предмет.
+#Список запрещенных предметов теперь настраивается в игре командой.
 storages:
   CHEST:
     sound: BLOCK_CHEST_LOCKED
-    items-filter: [DIAMOND, COAL]
   ENDER_CHEST:
-    sound: ENTITY_ITEM_PICKUP
-    items-filter: [EMERALD, DIAMOND_ORE]
+    sound: ENTITY_ENDERMAN_TELEPORT
   SHULKER_BOX:
-    sound: BLOCK_NOTE_BLOCK_BASS
-    items-filter: [NETHERITE_INGOT, NETHERITE_BLOCK]
+    sound: BLOCK_SHULKER_BOX_CLOSE
   BARREL:
-    sound: BLOCK_CHEST_LOCKED
-    items-filter: [TNT, GUNPOWDER]
+    sound: BLOCK_BARREL_CLOSE
 
 messages:
-  no-permission: "#0EC8E2[✘] &fУ вас нет прав!"
-  usage: "&fИспользования: #00F3FB/EnderChestFilter <reload>"
-  reload: "#0EC8E2[✔] &fКонфиг успешно перезагружен!"
-  unknown: "#0EC8E2[✘] &fТакой команды не существует!"
-  player: "#0EC8E2[✘] &fВы не можете #0EC8E2поместить &fэтот предмет в это хранилище!"
+  no-permission: "#C102FA[✘] &fУ вас нет прав для выполнения этой команды."
+  reload: "#C102FA[✔] &fКонфиг успешно перезагружен!"
+  usage: "#C102FA[!] &fИспользование: &e/EnderChestFilter <type|reload>"
+  must-be-player: "&cЭту команду может использовать только игрок."
+  must-hold-item: "#C102FA[✘] &fВы должны держать предмет в руке!"
+  unknown-storage: "#C102FA[✘] &fХранилище с типом &c%storage% &fне найдено или не поддерживается"
+  item-added-to-filter: "#C102FA[✔] &fФильтр для C102FA%item% &fвключен в хранилище C102FA%storage%"
+  item-removed-from-filter: "#C102FA[✔] &fФильтр для C102FA%item% &fотключен в хранилище C102FA%storage%"
+  player-deny: "#C102FA[✘] &fВы не можете поместить этот предмет в данное хранилище!"

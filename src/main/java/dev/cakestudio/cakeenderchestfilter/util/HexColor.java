@@ -1,4 +1,4 @@
-package dev.cakestudio.cakeenderchestfilter.utils;
+package dev.cakestudio.cakeenderchestfilter.util;
 
 import lombok.NonNull;
 import net.md_5.bungee.api.ChatColor;

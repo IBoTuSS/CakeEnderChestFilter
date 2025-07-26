@@ -4,10 +4,13 @@ main: dev.cakestudio.cakeenderchestfilter.CakeEnderChestFilter
 api-version: '1.16'
 authors: [CakeStudio]
 website: https://discord.gg/rsgYvuRD8n
+libraries:
+  - com.zaxxer:HikariCP:6.2.1
+  - org.json:json:20250517
 commands:
   EnderChestFilter: {}
 permissions:
   cakeenderchestfilter.bypass:
     default: op
-  cakeenderchestfilter.reload:
+  cakeenderchestfilter.admin:
     default: op
